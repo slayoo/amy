@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>AMY release v3.4.0 - 2022-01-03 - AMY documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "AMY release v3.4.0 - 2022-01-03";
+        var mkdocs_page_input_path = "releases/v3.4.0.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> AMY documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">For AMY Administrators</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../users_guide/">Users Guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../amy_database_structure/">Database Structure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">For AMY Developers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../design/">Design</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../design/database_models/">Database Models</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../design/template_hierarchy/">Template Hierarchy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../design/server_infrastructure/">Server Infrastructure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../procedures/">Procedures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sending_mails/">Sending Mails</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="..">Releases</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">About The Carpentries</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="https://carpentries.org">The Carpentries</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://datacarpentry.org/">Data Carpentry</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://librarycarpentry.org/">Library Carpentry</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://software-carpentry.org/">Software Carpentry</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://amy.carpentries.org">AMY</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">AMY documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>AMY release v3.4.0 - 2022-01-03</li>
+    <li class="wy-breadcrumbs-aside">
+        <a href="https://github.com/carpentries/amy/edit/develop/docs/releases/v3.4.0.md"
+          class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="amy-release-v340-2022-01-03">AMY release v3.4.0 - 2022-01-03<a class="headerlink" href="#amy-release-v340-2022-01-03" title="Permanent link"></a></h1>
+<p>Major AMY release <a href="https://github.com/carpentries/amy/milestone/83">v3.4.0</a>. It contains some quite exciting features, like Community
+Roles and (disabled for now) basic Instructor Recruitment Process.</p>
+<h2 id="new-features">New features<a class="headerlink" href="#new-features" title="Permanent link"></a></h2>
+<ol>
+<li><a href="https://github.com/pbanaszkiewicz">Piotr</a> [#2021, #2022, #2023] Community Roles: basic models - <a href="https://github.com/carpentries/amy/pull/2084">#2084</a></li>
+<li><a href="https://github.com/maneesha">maneesha</a> Remove old user guide - <a href="https://github.com/carpentries/amy/pull/2089">#2089</a></li>
+<li><a href="https://github.com/maneesha">maneesha</a> update AMY contributor list - <a href="https://github.com/carpentries/amy/pull/2088">#2088</a></li>
+<li><a href="https://github.com/pbanaszkiewicz">Piotr</a> [#2024] Person profile - Community Roles - <a href="https://github.com/carpentries/amy/pull/2091">#2091</a></li>
+<li><a href="https://github.com/lauryndbrown">LB</a> feat(Profile Archival) Add yearly reminders for the user to update their profile. - <a href="https://github.com/carpentries/amy/pull/2034">#2034</a></li>
+<li><a href="https://github.com/pbanaszkiewicz">Piotr</a> Update packages - <a href="https://github.com/carpentries/amy/pull/2110">#2110</a></li>
+<li><a href="https://github.com/pbanaszkiewicz">Piotr</a> [#2106] Increase security in generic_schedule_email redirect - <a href="https://github.com/carpentries/amy/pull/2107">#2107</a></li>
+<li><a href="https://github.com/pbanaszkiewicz">Piotr</a> [#1811] Successful job result TTL is 1 year long - <a href="https://github.com/carpentries/amy/pull/2105">#2105</a></li>
+<li><a href="https://github.com/pbanaszkiewicz">Piotr</a> [#2061][#2062] Instructor Recruitment basics - <a href="https://github.com/carpentries/amy/pull/2108">#2108</a></li>
+<li><a href="https://github.com/pbanaszkiewicz">Piotr</a> [#2098] Change Fee Choices for request and inquiry forms - <a href="https://github.com/carpentries/amy/pull/2111">#2111</a></li>
+</ol>
+<h2 id="bugfixes">Bugfixes<a class="headerlink" href="#bugfixes" title="Permanent link"></a></h2>
+<ol>
+<li><a href="https://github.com/pbanaszkiewicz">Piotr</a> [#2097] Improve select2 widget keyboard navigation - <a href="https://github.com/carpentries/amy/pull/2104">#2104</a></li>
+</ol>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/carpentries/amy/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

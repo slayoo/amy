@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Database Models - AMY documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Database Models";
+        var mkdocs_page_input_path = "design/database_models.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> AMY documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">For AMY Administrators</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../users_guide/">Users Guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../amy_database_structure/">Database Structure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">For AMY Developers</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Design</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Database Models</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#mixins">Mixins</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#reversion-mechanism">Reversion mechanism</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#auxiliary-functions-and-models">Auxiliary functions and models</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#user-management-and-authentication">User management and authentication</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#base-models">Base models</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#organization">Organization</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#membership">Membership</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#airport">Airport</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#person-and-personmanager">Person and PersonManager</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#event">Event</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#role">Role</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#task-and-taskmanager">Task and TaskManager</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#lesson">Lesson</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#qualification">Qualification</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#badge">Badge</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#award">Award</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#knowledgedomain">KnowledgeDomain</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tag">Tag</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#language">Language</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#requests-and-form-models">Requests and form-models</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#eventrequest">EventRequest</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#eventsubmission">EventSubmission</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dcselforganizedeventrequest">DCSelfOrganizedEventRequest</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#academiclevel">AcademicLevel</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#computingexperiencelevel">ComputingExperienceLevel</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dataanalysislevel">DataAnalysisLevel</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dcworkshoptopic">DCWorkshopTopic</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dcworkshopdomain">DCWorkshopDomain</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#training-connected-models">Training-connected models</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#trainingrequest">TrainingRequest</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#trainingrequirement">TrainingRequirement</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#trainingprogress">TrainingProgress</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#query-sets">Query sets</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#tagqueryset">TagQuerySet</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#eventqueryset">EventQuerySet</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#badgequeryset">BadgeQuerySet</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#deprecated">Deprecated</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#todoitemqueryset">TodoItemQuerySet</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#todoitem">TodoItem</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../template_hierarchy/">Template Hierarchy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../server_infrastructure/">Server Infrastructure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../procedures/">Procedures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sending_mails/">Sending Mails</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../releases">Releases</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">About The Carpentries</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="https://carpentries.org">The Carpentries</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://datacarpentry.org/">Data Carpentry</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://librarycarpentry.org/">Library Carpentry</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://software-carpentry.org/">Software Carpentry</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://amy.carpentries.org">AMY</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">AMY documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>For AMY Developers &raquo;</li><li>Database Models</li>
+    <li class="wy-breadcrumbs-aside">
+        <a href="https://github.com/carpentries/amy/edit/develop/docs/design/database_models.md"
+          class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="database-models">Database models<a class="headerlink" href="#database-models" title="Permanent link"></a></h1>
+<p>This document describes and summarizes roles of database models used in AMY
+(<code>workshops/models.py</code>).</p>
+<h2 id="mixins">Mixins<a class="headerlink" href="#mixins" title="Permanent link"></a></h2>
+<p>Following classes are used to extend Django models with the same features:</p>
+<ul>
+<li><code>PermissionsMixin</code>: Django mechanism for extending custom user classes,
+see <a href="https://docs.djangoproject.com/en/2.2/topics/auth/customizing/#custom-users-and-permissions">documentation</a>.</li>
+<li><code>AssignmentMixin</code>: adds <code>assigned_to</code> field to the model.</li>
+<li><code>ActiveMixin</code>: adds <code>active</code> boolean field to the model.</li>
+<li><code>CreatedUpdatedMixin</code>: adds <code>created_at</code> and <code>last_updated_at</code> datetime
+fields to the model.</li>
+</ul>
+<h2 id="reversion-mechanism">Reversion mechanism<a class="headerlink" href="#reversion-mechanism" title="Permanent link"></a></h2>
+<p>Some of the models are using a <code>@reversion.register</code> decorator. This
+decorator comes from a <code>django-reversion</code>
+<a href="https://django-reversion.readthedocs.io/en/stable/">package</a> indended for
+storing and easily restoring of historic "versions" of model instances.</p>
+<h2 id="auxiliary-functions-and-models">Auxiliary functions and models<a class="headerlink" href="#auxiliary-functions-and-models" title="Permanent link"></a></h2>
+<p><code>django-countries</code>
+(<a href="https://pypi.python.org/pypi/django-countries">documentation</a>) is used for
+location purposes within <code>Airport</code>, <code>Organization</code> and
+<code>Event</code>-related models.</p>
+<p><code>django-airports</code> was considered for implementing world-wide airports, but it turned out it required geo extensions to the database.</p>
+<p>An <code>is_admin</code> function defined within models is used for determining if
+a person has administration role. People who are superusers (in terms of
+Django authentication system) or belong to one of administrative groups
+(again in terms of Django authentication system), including
+"administrators", "steering committee", "trainers" and "invoicing", are
+thought to be administrators.</p>
+<h2 id="user-management-and-authentication">User management and authentication<a class="headerlink" href="#user-management-and-authentication" title="Permanent link"></a></h2>
+<p>A custom user model (<code>Person</code>) was defined according to Django documentation.</p>
+<h2 id="base-models">Base models<a class="headerlink" href="#base-models" title="Permanent link"></a></h2>
+<h3 id="organization"><code>Organization</code><a class="headerlink" href="#organization" title="Permanent link"></a></h3>
+<h3 id="membership"><code>Membership</code><a class="headerlink" href="#membership" title="Permanent link"></a></h3>
+<h3 id="airport"><code>Airport</code><a class="headerlink" href="#airport" title="Permanent link"></a></h3>
+<h3 id="person-and-personmanager"><code>Person</code> and <code>PersonManager</code><a class="headerlink" href="#person-and-personmanager" title="Permanent link"></a></h3>
+<h3 id="event"><code>Event</code><a class="headerlink" href="#event" title="Permanent link"></a></h3>
+<h3 id="role"><code>Role</code><a class="headerlink" href="#role" title="Permanent link"></a></h3>
+<h3 id="task-and-taskmanager"><code>Task</code> and <code>TaskManager</code><a class="headerlink" href="#task-and-taskmanager" title="Permanent link"></a></h3>
+<h3 id="lesson"><code>Lesson</code><a class="headerlink" href="#lesson" title="Permanent link"></a></h3>
+<h3 id="qualification"><code>Qualification</code><a class="headerlink" href="#qualification" title="Permanent link"></a></h3>
+<h3 id="badge"><code>Badge</code><a class="headerlink" href="#badge" title="Permanent link"></a></h3>
+<h3 id="award"><code>Award</code><a class="headerlink" href="#award" title="Permanent link"></a></h3>
+<h3 id="knowledgedomain"><code>KnowledgeDomain</code><a class="headerlink" href="#knowledgedomain" title="Permanent link"></a></h3>
+<h3 id="tag"><code>Tag</code><a class="headerlink" href="#tag" title="Permanent link"></a></h3>
+<h3 id="language"><code>Language</code><a class="headerlink" href="#language" title="Permanent link"></a></h3>
+<h2 id="requests-and-form-models">Requests and form-models<a class="headerlink" href="#requests-and-form-models" title="Permanent link"></a></h2>
+<h3 id="eventrequest"><code>EventRequest</code><a class="headerlink" href="#eventrequest" title="Permanent link"></a></h3>
+<h3 id="eventsubmission"><code>EventSubmission</code><a class="headerlink" href="#eventsubmission" title="Permanent link"></a></h3>
+<h3 id="dcselforganizedeventrequest"><code>DCSelfOrganizedEventRequest</code><a class="headerlink" href="#dcselforganizedeventrequest" title="Permanent link"></a></h3>
+<h3 id="academiclevel"><code>AcademicLevel</code><a class="headerlink" href="#academiclevel" title="Permanent link"></a></h3>
+<h3 id="computingexperiencelevel"><code>ComputingExperienceLevel</code><a class="headerlink" href="#computingexperiencelevel" title="Permanent link"></a></h3>
+<h3 id="dataanalysislevel"><code>DataAnalysisLevel</code><a class="headerlink" href="#dataanalysislevel" title="Permanent link"></a></h3>
+<h3 id="dcworkshoptopic"><code>DCWorkshopTopic</code><a class="headerlink" href="#dcworkshoptopic" title="Permanent link"></a></h3>
+<h3 id="dcworkshopdomain"><code>DCWorkshopDomain</code><a class="headerlink" href="#dcworkshopdomain" title="Permanent link"></a></h3>
+<h2 id="training-connected-models">Training-connected models<a class="headerlink" href="#training-connected-models" title="Permanent link"></a></h2>
+<h3 id="trainingrequest"><code>TrainingRequest</code><a class="headerlink" href="#trainingrequest" title="Permanent link"></a></h3>
+<h3 id="trainingrequirement"><code>TrainingRequirement</code><a class="headerlink" href="#trainingrequirement" title="Permanent link"></a></h3>
+<h3 id="trainingprogress"><code>TrainingProgress</code><a class="headerlink" href="#trainingprogress" title="Permanent link"></a></h3>
+<h2 id="query-sets">Query sets<a class="headerlink" href="#query-sets" title="Permanent link"></a></h2>
+<h3 id="tagqueryset"><code>TagQuerySet</code><a class="headerlink" href="#tagqueryset" title="Permanent link"></a></h3>
+<h3 id="eventqueryset"><code>EventQuerySet</code><a class="headerlink" href="#eventqueryset" title="Permanent link"></a></h3>
+<h3 id="badgequeryset"><code>BadgeQuerySet</code><a class="headerlink" href="#badgequeryset" title="Permanent link"></a></h3>
+<h2 id="deprecated">Deprecated<a class="headerlink" href="#deprecated" title="Permanent link"></a></h2>
+<h3 id="todoitemqueryset"><code>TodoItemQuerySet</code><a class="headerlink" href="#todoitemqueryset" title="Permanent link"></a></h3>
+<h3 id="todoitem"><code>TodoItem</code><a class="headerlink" href="#todoitem" title="Permanent link"></a></h3>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../" class="btn btn-neutral float-left" title="Design"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../template_hierarchy/" class="btn btn-neutral float-right" title="Template Hierarchy">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/carpentries/amy/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../template_hierarchy/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
